@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "alignment": "left",
   "animateLoading": true,
-  "bottomRow": 45,
+  "bottomRow": 44,
   "boxShadow": "none",
   "defaultOptionValue": "Mon_5PM",
   "dynamicBindingPathList": [
@@ -42,7 +42,7 @@
       "value": "Now"
     }
   ],
-  "originalBottomRow": 45,
+  "originalBottomRow": 44,
   "originalTopRow": 36,
   "parentColumnSpace": 6.84375,
   "parentId": "cj1pk3zki1",

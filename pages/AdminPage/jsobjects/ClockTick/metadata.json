@@ -1,0 +1,16 @@
+{
+  "gitSyncId": "694e5865c148916db7d99c87_32ae22a1-93a8-47e6-83ba-e2b84589959a",
+  "id": "AdminPage_ClockTick",
+  "unpublishedCollection": {
+    "name": "ClockTick",
+    "pageId": "AdminPage",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "interval",
+        "value": "null"
+      }
+    ]
+  }
+}

@@ -29,7 +29,7 @@
           "data": ""
         },
         "rowObjects": {
-          "data": "{{\n  {\n    rowIndex: GameUtils.gameRowNumber(GetGames.data, Dropdown_CloseGame.selectedOptionValue) - 2,\n    IsClosed: \"TRUE\",\n    ClosedAt: moment().format(\"YYYY-MM-DD HH:mm:ss\")\n  }\n}}\n\n\n\n}}\n\n\n"
+          "data": "{{\n  {\n    rowIndex: GameUtils.gameRowNumber(GetGames.data, Dropdown_CloseGame.selectedOptionValue) - 2,\n    IsClosed: \"TRUE\",\n    ClosedAt: moment().format(\"YYYY-MM-DD HH:mm:ss\")\n\t\n  }\n}}\n\n\n\n}}\n\n\n"
         },
         "sheetName": {
           "data": "Games"

@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 71,
+  "bottomRow": 70,
   "boxShadow": "none",
   "defaultOptionValue": "",
   "dynamicBindingPathList": [
@@ -20,9 +20,6 @@
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
-    },
-    {
-      "key": "onOptionChange"
     }
   ],
   "dynamicTriggerPathList": [
@@ -50,11 +47,11 @@
   "mobileRightColumn": 23,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "onOptionChange": "{{ GetVotesCurrent.run() }}",
+  "onOptionChange": "",
   "optionLabel": "label",
   "optionValue": "value",
-  "originalBottomRow": 71,
-  "originalTopRow": 66,
+  "originalBottomRow": 70,
+  "originalTopRow": 65,
   "parentColumnSpace": 6.84375,
   "parentId": "cj1pk3zki1",
   "parentRowSpace": 10,
@@ -63,8 +60,8 @@
   "responsiveBehavior": "fill",
   "rightColumn": 31,
   "serverSideFiltering": false,
-  "sourceData": "{{\n  (GetGames.data || [])\n    .filter(g => String(g.IsClosed).toUpperCase() !== \"TRUE\")\n    .map(g => ({\n      label: `${g.GameID} — ${moment(g.GameDate).format(\"DD-MMM\")} — ${g.Location || \"\"}`,\n      value: g.GameID\n    }))\n}}\n",
-  "topRow": 66,
+  "sourceData": "{{\n  (GetGames.data || [])\n    .filter(g => String(g.IsClosed).toUpperCase() !== \"TRUE\")\n    .map(g => ({\n      label: `${g.GameID} — ${moment(g.GameDate).format(\"DD-MMM\")} — ${g.Location || \"\"}`,\n      value: g.GameID\n    }))\n}}",
+  "topRow": 65,
   "type": "SELECT_WIDGET",
   "version": 1,
   "widgetId": "bxtq3tg886",

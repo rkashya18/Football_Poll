@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 80,
+  "bottomRow": 79,
   "boxShadow": "none",
   "defaultOptionValue": "",
   "dynamicBindingPathList": [
@@ -22,7 +22,11 @@
       "key": "sourceData"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onOptionChange"
+    }
+  ],
   "isDisabled": false,
   "isFilterable": true,
   "isLoading": false,
@@ -43,10 +47,11 @@
   "mobileRightColumn": 24,
   "mobileTopRow": 79,
   "needsErrorInfo": false,
+  "onOptionChange": "\n",
   "optionLabel": "label",
   "optionValue": "value",
-  "originalBottomRow": 80,
-  "originalTopRow": 73,
+  "originalBottomRow": 79,
+  "originalTopRow": 72,
   "parentColumnSpace": 6.84375,
   "parentId": "cj1pk3zki1",
   "parentRowSpace": 10,
@@ -55,8 +60,8 @@
   "responsiveBehavior": "fill",
   "rightColumn": 30,
   "serverSideFiltering": false,
-  "sourceData": "{{\n  (GetGames.data || []).map(g => ({\n    label: g.GameID,\n    value: g.GameID\n  }))\n}}\n",
-  "topRow": 73,
+  "sourceData": "{{\n  (GetGames.data || [])\n    .filter(g => String(g.IsClosed).toUpperCase() !== \"TRUE\")\n    .map(g => ({\n      label: `${g.GameID} — ${moment(g.GameDate).format(\"DD-MMM\")} — ${g.Location || \"\"}`,\n      value: g.GameID\n    }))\n}}",
+  "topRow": 72,
   "type": "SELECT_WIDGET",
   "version": 1,
   "widgetId": "65tv9emvvh",
