@@ -1,0 +1,16 @@
+{
+  "gitSyncId": "694a47a08fe0a04f7163f864_f14015e7-0270-4789-983d-1c8df5ea75ca",
+  "id": "PlayerPollPage_Countdown",
+  "unpublishedCollection": {
+    "name": "Countdown",
+    "pageId": "PlayerPollPage",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "intervalId",
+        "value": "null"
+      }
+    ]
+  }
+}

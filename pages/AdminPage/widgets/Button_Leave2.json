@@ -1,0 +1,54 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 5,
+  "boxShadow": "none",
+  "buttonColor": "#ef4444",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "xqmgiabh4d",
+  "leftColumn": 48,
+  "minWidth": 120,
+  "mobileBottomRow": 25,
+  "mobileLeftColumn": 49,
+  "mobileRightColumn": 64,
+  "mobileTopRow": 21,
+  "needsErrorInfo": false,
+  "onClick": "{{\n  storeValue(\"isAdminUnlocked\", false);\n  storeValue(\"adminUserID\", \"\");\n// clear password + admin selection\n    resetWidget(\"Input_PWD\"); resetWidget(\"Dropdown_AdminUser\");\n  showAlert(\"Admin locked\", \"info\");\nnavigateTo(\"PlayerPollPage\");\n}}\n",
+  "originalBottomRow": 23,
+  "originalTopRow": 19,
+  "parentColumnSpace": 6.84375,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 63,
+  "text": "Leave",
+  "topRow": 1,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "hsn40cx9h7",
+  "widgetName": "Button_Leave2"
+}

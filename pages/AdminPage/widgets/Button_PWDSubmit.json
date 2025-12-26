@@ -1,0 +1,57 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 27,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "xqmgiabh4d",
+  "leftColumn": 40,
+  "minWidth": 120,
+  "mobileBottomRow": 21,
+  "mobileLeftColumn": 40,
+  "mobileRightColumn": 56,
+  "mobileTopRow": 17,
+  "needsErrorInfo": false,
+  "onClick": "{{\n  (function () {\n    const adminId = Dropdown_AdminUser.selectedOptionValue;\n    const pwd = Input_PWD.text;\n\n    if (!adminId) {\n      showAlert(\"Select an admin user first\", \"warning\");\n      return;\n    }\n\n    // Step 1: verify selected user is actually an admin\n    const isAdminUser = (GetUsers.data || []).some(u =>\n      u.UserID === adminId &&\n      (u.isAdmin === \"TRUE\" || u.isAdmin === true) &&\n      (u.Active === \"TRUE\" || u.Active === true)\n    );\n\n    if (!isAdminUser) {\n      showAlert(\"Selected user is not an admin\", \"error\");\n      return;\n    }\n\n    // Step 2: password check (shared OTP)\n    if (pwd === \"1234\") {   // 🔐 change anytime\n      storeValue(\"isAdminUnlocked\", true);\n      storeValue(\"adminUserID\", adminId);\n\n      showAlert(\"Admin access granted\", \"success\");\n      resetWidget(\"Input_PWD\");\n    } else {\n      showAlert(\"Invalid password\", \"error\");\n    }\n  })()\n}}\n",
+  "originalBottomRow": 27,
+  "originalTopRow": 23,
+  "parentColumnSpace": 6.84375,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 58,
+  "text": "Submit",
+  "topRow": 23,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "hpd30883p1",
+  "widgetName": "Button_PWDSubmit"
+}

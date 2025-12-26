@@ -1,0 +1,16 @@
+{
+  "gitSyncId": "694a47a08fe0a04f7163f864_18afd5bf-7978-4127-a061-b728a1444713",
+  "id": "PlayerPollPage_AutoRefreshVotes",
+  "unpublishedCollection": {
+    "name": "AutoRefreshVotes",
+    "pageId": "PlayerPollPage",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "intervalId",
+        "value": "null"
+      }
+    ]
+  }
+}

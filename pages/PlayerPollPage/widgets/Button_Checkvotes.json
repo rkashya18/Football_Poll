@@ -1,0 +1,57 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 47,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": false,
+  "key": "pqyx33xn6u",
+  "leftColumn": 9,
+  "minWidth": 120,
+  "mobileBottomRow": 77,
+  "mobileLeftColumn": 14,
+  "mobileRightColumn": 30,
+  "mobileTopRow": 73,
+  "needsErrorInfo": false,
+  "onClick": "Dropdown_Game.onOptionChange = {{ AutoRefreshVotes.start() }}",
+  "originalBottomRow": 47,
+  "originalTopRow": 43,
+  "parentColumnSpace": 6.84375,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 50,
+  "text": "Check Status",
+  "topRow": 43,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "9ransvkn88",
+  "widgetName": "Button_Checkvotes"
+}

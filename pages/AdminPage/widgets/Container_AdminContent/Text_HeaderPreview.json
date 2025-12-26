@@ -1,0 +1,55 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 36,
+  "dynamicBindingPathList": [
+    {
+      "key": "truncateButtonColor"
+    },
+    {
+      "key": "fontFamily"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "text"
+    }
+  ],
+  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicTriggerPathList": [],
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "fontSize": "1rem",
+  "fontStyle": "BOLD",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "bmx2e6cl49",
+  "leftColumn": 0,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 38,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 9,
+  "mobileTopRow": 34,
+  "needsErrorInfo": false,
+  "originalBottomRow": 36,
+  "originalTopRow": 29,
+  "overflow": "NONE",
+  "parentColumnSpace": 19.125,
+  "parentId": "cj1pk3zki1",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 58,
+  "shouldTruncate": false,
+  "text": "{{\n  \"Are you available to join a game of football at \" +\n  (Input_Venue.text || \"NPS\") +\n  \" on \" +\n  (DatePicker_GameDate.formattedDate || \"[select date]\") +\n  \" from \" +\n  (Input_StartTime.text || \"[start time]\") +\n  \" to \" +\n  (Input_EndTime.text || \"[end time]\") +\n  \"?\"\n}}\n",
+  "textAlign": "LEFT",
+  "textColor": "#231F20",
+  "topRow": 29,
+  "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "type": "TEXT_WIDGET",
+  "version": 1,
+  "widgetId": "zbb3gz2fid",
+  "widgetName": "Text_HeaderPreview"
+}

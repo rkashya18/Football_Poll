@@ -1,0 +1,11 @@
+{
+  "gitSyncId": "694a47a08fe0a04f7163f864_1073bb8e-fb33-489a-bfdb-2d080faa3a72",
+  "id": "AdminPage_AdminGameCreate",
+  "unpublishedCollection": {
+    "name": "AdminGameCreate",
+    "pageId": "AdminPage",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": []
+  }
+}

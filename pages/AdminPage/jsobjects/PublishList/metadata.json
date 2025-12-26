@@ -1,0 +1,11 @@
+{
+  "gitSyncId": "694a47a08fe0a04f7163f864_ab91f223-83c3-4120-a6ba-0e2ba0854fa8",
+  "id": "AdminPage_PublishList",
+  "unpublishedCollection": {
+    "name": "PublishList",
+    "pageId": "AdminPage",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": []
+  }
+}

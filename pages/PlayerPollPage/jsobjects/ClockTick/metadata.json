@@ -1,0 +1,16 @@
+{
+  "gitSyncId": "694a47a08fe0a04f7163f864_4a3db43f-5ffa-49e7-868a-657847489388",
+  "id": "PlayerPollPage_ClockTick",
+  "unpublishedCollection": {
+    "name": "ClockTick",
+    "pageId": "PlayerPollPage",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "intervalId",
+        "value": "null"
+      }
+    ]
+  }
+}

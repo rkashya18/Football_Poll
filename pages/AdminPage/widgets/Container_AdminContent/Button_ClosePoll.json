@@ -1,0 +1,54 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 80,
+  "boxShadow": "none",
+  "buttonColor": "#ef4444",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "pqyx33xn6u",
+  "leftColumn": 33,
+  "minWidth": 120,
+  "mobileBottomRow": 83,
+  "mobileLeftColumn": 38,
+  "mobileRightColumn": 54,
+  "mobileTopRow": 79,
+  "needsErrorInfo": false,
+  "onClick": "{{\n  (() => {\n    const gid = Dropdown_CloseGame.selectedOptionValue;\n\n    if (!gid) {\n      showAlert(\"Select a GameID first.\", \"warning\");\n      return;\n    }\n\n    const rowNumber = GameUtils.gameRowNumber(GetGames.data, gid);\n\n    if (!rowNumber) {\n      showAlert(\n        `Row number is null. GameID=${gid}. (GetGames.data may be empty or not matching)`,\n        \"error\"\n      );\n      return;\n    }\n\n    ClosePoll.run(\n      { rowNumber },\n      () => {\n        showAlert(`Poll ${gid} closed successfully.`, \"success\");\n        GetGames.run();\n      },\n      (err) => {\n        showAlert(`Close failed: ${err?.message || err}`, \"error\");\n      }\n    );\n  })()\n}}\n",
+  "originalBottomRow": 80,
+  "originalTopRow": 75,
+  "parentColumnSpace": 6.84375,
+  "parentId": "cj1pk3zki1",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 59,
+  "text": "Close Poll",
+  "topRow": 75,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "m12psp6aph",
+  "widgetName": "Button_ClosePoll"
+}
