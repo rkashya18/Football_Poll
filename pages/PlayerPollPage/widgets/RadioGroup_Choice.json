@@ -56,16 +56,16 @@
       "value": "In"
     },
     {
-      "label": "Paid",
-      "value": "Paid"
-    },
-    {
       "label": "Out",
       "value": "Out"
     },
     {
-      "label": "Dropping ",
+      "label": "Dropping",
       "value": "Dropping"
+    },
+    {
+      "label": "Paid",
+      "value": "Paid"
     }
   ],
   "originalBottomRow": 41,
