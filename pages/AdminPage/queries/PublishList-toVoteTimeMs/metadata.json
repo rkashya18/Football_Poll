@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "694a47a08fe0a04f7163f864_849fedc2-11b0-48a3-aff4-8d4d252e1af5",
-  "id": "AdminPage_PublishList.buildFullList",
+  "gitSyncId": "694e5865c148916db7d99c87_584a83fb-e5f0-4df4-a5cf-4e143001f24e",
+  "id": "AdminPage_PublishList.toVoteTimeMs",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
@@ -8,7 +8,7 @@
       "encodeParamsToggle": true,
       "jsArguments": [
         {
-          "name": "gameIdOverride"
+          "name": "vt"
         }
       ],
       "paginationType": "NONE",
@@ -26,8 +26,8 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "PublishList.buildFullList",
-    "name": "buildFullList",
+    "fullyQualifiedName": "PublishList.toVoteTimeMs",
+    "name": "toVoteTimeMs",
     "pageId": "AdminPage",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

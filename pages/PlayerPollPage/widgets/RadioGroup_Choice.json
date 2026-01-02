@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "alignment": "left",
   "animateLoading": true,
-  "bottomRow": 41,
+  "bottomRow": 37,
   "boxShadow": "none",
   "defaultOptionValue": "",
   "dynamicBindingPathList": [
@@ -76,7 +76,7 @@
   "renderMode": "CANVAS",
   "rightColumn": 22,
   "shouldScrollContents": true,
-  "topRow": 30,
+  "topRow": 26,
   "type": "RADIO_GROUP_WIDGET",
   "version": 1,
   "widgetId": "fp14nas88g",

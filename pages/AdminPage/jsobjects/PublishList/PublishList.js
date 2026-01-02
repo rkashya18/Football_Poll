@@ -1,44 +1,74 @@
 export default {
-  // Builds ranked list from GetCurrentVotes + GetUsers
-buildFullList() {
-  const votes = GetVotesCurrent.data || [];
-  const users = GetUsers.data || [];
+  // Convert VoteTime into milliseconds for stable sorting
+  // Supports:
+  // - Unix seconds (10 digits)
+  // - Unix milliseconds (13 digits)
+  // - "YYYY-MM-DD HH:mm:ss"
+  // - ISO strings
+  toVoteTimeMs(vt) {
+    if (vt === null || vt === undefined || vt === "") return NaN;
 
-  const gameId =
-    Dropdown_Game?.selectedOptionValue ||
-    Dropdown_Game?.selectedOptionValue ||
-    "";
+    const s = String(vt).trim();
 
-  if (!gameId) return [];
+    // numeric timestamp
+    if (/^\d+$/.test(s)) {
+      const n = Number(s);
+      return s.length >= 13 ? n : n * 1000;
+    }
 
-  // Map UserID -> Name
-  const nameById = {};
-  users.forEach(u => { nameById[u.UserID] = u.Name; });
+    // datetime string
+    const m = moment(s, ["YYYY-MM-DD HH:mm:ss", moment.ISO_8601], true);
+    return m.isValid() ? m.valueOf() : NaN;
+  },
 
-  return votes
-    // ✅ ONLY this game's votes
-    .filter(v => v.GameID === gameId)
-    // Eligible = In or Paid
-    .filter(v => v.Choice === "In" || v.Choice === "Paid")
-    .sort((a, b) => {
-      const t = Number(a.VoteTime) - Number(b.VoteTime);
-      if (t !== 0) return t;
-      return Number(a.VoteOrder) - Number(b.VoteOrder);
-    })
-    .map((v, idx) => {
-      const rank = idx + 1;
-      const slot = rank <= 12 ? "PLAYING" : `WL-${rank - 12}`;
-      const name = nameById[v.UserID] || "";
-      const paidFlag = v.Choice === "Paid" ? "PAID" : "IN";
+  buildFullList(gameIdOverride) {
+    const votes = GetVotesCurrent.data || [];
+    const users = GetUsers.data || [];
 
-      return { rank, slot, name, userId: v.UserID, paidFlag };
+    const gameId =
+      gameIdOverride ||
+      Dropdown_Game?.selectedOptionValue ||
+      "";
+
+    if (!gameId) return [];
+
+    // Map UserID -> Name
+    const nameById = {};
+    users.forEach(u => {
+      nameById[String(u.UserID)] = u.Name;
     });
+
+    return votes
+      .filter(v => String(v.GameID) === String(gameId))
+      // ✅ FIX: case-insensitive IN/PAID
+      .filter(v => {
+        const c = String(v.Choice || "").trim().toUpperCase();
+        return ["IN", "PAID"].includes(c);
+      })
+      .sort((a, b) => {
+        const ta = this.toVoteTimeMs(a.VoteTime);
+        const tb = this.toVoteTimeMs(b.VoteTime);
+        if (ta !== tb) return ta - tb;
+        return Number(a.VoteOrder || 0) - Number(b.VoteOrder || 0);
+      })
+      .map((v, idx) => {
+        const rank = idx + 1;
+        const slot = rank <= 12 ? "PLAYING" : `WL-${rank - 12}`;
+        const choice = String(v.Choice || "").trim().toUpperCase();
+
+        return {
+          rank,
+          slot,
+          name: nameById[String(v.UserID)] || "", // keep name if available
+          userId: String(v.UserID),
+          paidFlag: choice === "PAID" ? "PAID" : "IN"
+        };
+      });
   },
 
   // Generates and downloads the TXT
-  downloadTxt() {
+  async downloadTxt() {
     const gameId =
-      Dropdown_Game?.selectedOptionValue ||
       Dropdown_Game?.selectedOptionValue ||
       "";
 
@@ -47,10 +77,13 @@ buildFullList() {
       return;
     }
 
-    const rows = this.buildFullList(); // ✅ FIXED
+    // ✅ Ensure we publish latest votes
+    await GetVotesCurrent.run();
+
+    const rows = this.buildFullList(gameId);
 
     if (!rows.length) {
-      showAlert("No In/Paid votes found for this game", "warning");
+      showAlert("No IN/PAID votes found for this game", "warning");
       return;
     }
 
@@ -64,9 +97,10 @@ buildFullList() {
     lines.push("------------------------------");
 
     rows.forEach(r => {
-      lines.push(
-        `${String(r.rank).padStart(2, "0")} [${r.slot}] ${r.name} (${r.userId}) - ${r.paidFlag}`
-      );
+      // Keeps your old format:
+      // 01 [PLAYING] Name (UserID) - PAID/IN
+      const who = r.name ? `${r.name} (${r.userId})` : r.userId;
+      lines.push(`${String(r.rank).padStart(2, "0")} [${r.slot}] ${who} - ${r.paidFlag}`);
     });
 
     const text = lines.join("\n");
