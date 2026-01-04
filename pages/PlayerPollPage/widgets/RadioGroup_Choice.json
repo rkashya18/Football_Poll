@@ -49,7 +49,7 @@
   "mobileRightColumn": 24,
   "mobileTopRow": 25,
   "needsErrorInfo": false,
-  "onSelectionChange": "{{ \n  (() => {\n    ClockTick.start();\n    VoteActions.castVote(RadioGroup_Choice.selectedOptionValue);\n  })()\n}}\n\n\n",
+  "onSelectionChange": "{{ \n  (() => {\n    ClockTick.start();\n\n    const choice = RadioGroup_Choice.selectedOptionValue;\n    const gid = Dropdown_Game.selectedOptionValue;\n    const uid = Dropdown_User.selectedOptionValue;\n\n    // Hard guards (avoid blank inserts)\n    if (!choice || !gid || !uid) return;\n\n    // Ignore programmatic re-selection (very common cause)\n    const existing = VoteActions.myVote();\n    if (existing && String(existing.Choice).toUpperCase() === String(choice).toUpperCase()) return;\n\n    VoteActions.castVote(choice);\n  })()\n}}\n\n\n",
   "options": [
     {
       "label": "In",
