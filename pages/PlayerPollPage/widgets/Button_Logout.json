@@ -3,13 +3,10 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 43,
   "boxShadow": "none",
-  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonColor": "#af1308",
   "buttonVariant": "PRIMARY",
   "disabledWhenInvalid": false,
   "dynamicBindingPathList": [
-    {
-      "key": "buttonColor"
-    },
     {
       "key": "borderRadius"
     }
@@ -28,17 +25,15 @@
   "isDisabled": false,
   "isLoading": false,
   "isVisible": true,
-  "key": "pqyx33xn6u",
-  "leftColumn": 4,
+  "key": "6vslr35hbd",
+  "leftColumn": 30,
   "minWidth": 120,
-  "mobileBottomRow": 77,
-  "mobileLeftColumn": 14,
-  "mobileRightColumn": 30,
-  "mobileTopRow": 73,
+  "mobileBottomRow": 43,
+  "mobileLeftColumn": 30,
+  "mobileRightColumn": 46,
+  "mobileTopRow": 39,
   "needsErrorInfo": false,
-  "onClick": "Dropdown_Game.onOptionChange = {{ AutoRefreshVotes.start() }}",
-  "originalBottomRow": 43,
-  "originalTopRow": 39,
+  "onClick": "{{ PollAuth.logout() }}\n\n",
   "parentColumnSpace": 6.84375,
   "parentId": "0",
   "parentRowSpace": 10,
@@ -47,11 +42,11 @@
   "renderMode": "CANVAS",
   "resetFormOnClick": false,
   "responsiveBehavior": "hug",
-  "rightColumn": 28,
-  "text": "Check Status",
+  "rightColumn": 53,
+  "text": "LOGOUT",
   "topRow": 39,
   "type": "BUTTON_WIDGET",
   "version": 1,
-  "widgetId": "9ransvkn88",
-  "widgetName": "Button_Checkvotes"
+  "widgetId": "s9vqggivin",
+  "widgetName": "Button_Logout"
 }

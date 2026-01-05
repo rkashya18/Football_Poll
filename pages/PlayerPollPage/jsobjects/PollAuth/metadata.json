@@ -1,0 +1,11 @@
+{
+  "gitSyncId": "69590eac6c1ae66fe697eb01_242f5d74-da63-456e-b273-0e00adf91155",
+  "id": "PlayerPollPage_PollAuth",
+  "unpublishedCollection": {
+    "name": "PollAuth",
+    "pageId": "PlayerPollPage",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": []
+  }
+}

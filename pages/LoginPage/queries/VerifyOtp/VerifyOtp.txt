@@ -1,0 +1,5 @@
+{
+  "action": "verifyOtp",
+  "email": "{{Dropdown_Email.selectedOptionValue}}",
+  "otp": "{{Input_Otp.text}}"
+}

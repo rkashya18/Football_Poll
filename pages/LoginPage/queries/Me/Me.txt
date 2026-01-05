@@ -1,0 +1,4 @@
+{
+  "action": "me",
+  "sessionToken": "{{appsmith.store.sessionToken}}"
+}

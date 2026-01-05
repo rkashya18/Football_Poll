@@ -2,9 +2,9 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 7,
+  "bottomRow": 24,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  appsmith.store.loggedInUserId ))(Dropdown_User.options, Dropdown_User.serverSideFiltering) }}",
+  "defaultOptionValue": "GREEN",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -14,66 +14,51 @@
     },
     {
       "key": "sourceData"
-    },
-    {
-      "key": "isDisabled"
-    },
-    {
-      "key": "defaultOptionValue"
     }
   ],
   "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
-    },
-    {
-      "key": "isDisabled"
     }
   ],
-  "dynamicTriggerPathList": [
-    {
-      "key": "onOptionChange"
-    }
-  ],
-  "isDisabled": "{{ true }}",
+  "dynamicTriggerPathList": [],
+  "isDisabled": false,
   "isFilterable": true,
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "4enixw9upp",
+  "key": "jporvbja37",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelStyle": "",
-  "labelText": "Logged in as",
-  "labelTextSize": "1rem",
+  "labelText": "Select your email-id to login",
+  "labelTextSize": "0.875rem",
   "labelWidth": 5,
-  "leftColumn": 2,
+  "leftColumn": 5,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
   "mobileBottomRow": 22,
-  "mobileLeftColumn": 3,
-  "mobileRightColumn": 23,
+  "mobileLeftColumn": 6,
+  "mobileRightColumn": 26,
   "mobileTopRow": 15,
   "needsErrorInfo": false,
-  "onOptionChange": "",
-  "optionLabel": "value",
+  "optionLabel": "label",
   "optionValue": "value",
-  "originalBottomRow": 28,
-  "originalTopRow": 21,
+  "originalBottomRow": 24,
+  "originalTopRow": 17,
   "parentColumnSpace": 6.84375,
   "parentId": "0",
   "parentRowSpace": 10,
   "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 56,
+  "rightColumn": 44,
   "serverSideFiltering": false,
-  "sourceData": "{{\n  (GetUsers.data || [])\n    .filter(u => String(u.UserID) === String(appsmith.store.loggedInUserId))\n    .map(u => ({ label: u.Name, value: u.UserID }))\n}}\n",
-  "topRow": 0,
+  "sourceData": "{{ \n  (GetUsers.data || [])\n    .filter(u => String(u.Active).toUpperCase() === \"TRUE\" && u.Email)\n    .map(u => ({\n      label: u.Email,\n      value: u.Email\n    }))\n}}",
+  "topRow": 17,
   "type": "SELECT_WIDGET",
   "version": 1,
-  "widgetId": "722oqna8cf",
-  "widgetName": "Dropdown_User"
+  "widgetId": "qubfvnqnh0",
+  "widgetName": "Dropdown_Email"
 }

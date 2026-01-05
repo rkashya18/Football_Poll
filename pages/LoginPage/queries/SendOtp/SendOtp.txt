@@ -1,0 +1,6 @@
+{
+  "action": "sendOtp",
+  "email": "ramesh.kashyap18@gmail.com"
+}
+
+}
