@@ -16,11 +16,13 @@ export default {
 
     if (String(g.IsClosed).toUpperCase() === "TRUE") return "Poll is closed";
 
-    // ✅ Reactive gate (updated every 1s by Countdown.tick())
     if (appsmith.store.pollIsOpen !== true) {
-      // Optional: show the open time in the message
       if (g.PollOpenAt) {
-        const m = moment(g.PollOpenAt, ["YYYY-MM-DD HH:mm:ss", "YYYY-MM-DD HH:mm", moment.ISO_8601], true);
+        const m = moment(
+          g.PollOpenAt,
+          ["YYYY-MM-DD HH:mm:ss", "YYYY-MM-DD HH:mm", moment.ISO_8601],
+          true
+        );
         if (m.isValid()) return `Poll opens at ${m.format("ddd DD-MMM HH:mm")}`;
       }
       return "Poll not open yet";
@@ -39,12 +41,44 @@ export default {
     ) || null;
   },
 
+  getChoiceFromRow(row) {
+    if (!row) return "";
+
+    const raw =
+      row.Choice ??
+      row.choice ??
+      row.Status ??
+      row.status ??
+      row.Vote ??
+      row.vote ??
+      row.Option ??
+      row.option ??
+      row.NewChoice ??
+      row.newChoice ??
+      "";
+
+    return this.normalizeChoice(raw);
+  },
+
   myVoteRowIndex() {
     const row = this.myVoteRow();
     if (!row) return null;
 
     const n = parseInt(String(row.rowIndex ?? "").trim(), 10);
     return Number.isFinite(n) ? n : null;
+  },
+
+  // ✅ NEW: PAID allowed only if user is currently IN
+  canSelectPaid() {
+    // If poll isn't open / other reasons, no
+    const baseReason = this.disableReason();
+    if (baseReason) return false;
+
+    // Prefer store highlight if available, else derive from current vote row
+    const current = this.normalizeChoice(appsmith.store.myCurrentChoice || "");
+    const effective = current || this.getChoiceFromRow(this.myVoteRow());
+
+    return effective === "IN";
   },
 
   async submit(choiceRaw) {
@@ -60,15 +94,30 @@ export default {
       return;
     }
 
-    await storeValue("pendingChoice", choice);
+    // ✅ gate PAID selection until user is IN
+    if (choice === "PAID" && !this.canSelectPaid()) {
+      showAlert("Please choose IN first. Then you can mark PAID.", "warning");
+      return;
+    }
 
     const existing = this.myVoteRow();
+    const oldChoice = this.getChoiceFromRow(existing);
+
+    await storeValue("oldChoice", oldChoice);
+    await storeValue("pendingChoice", choice);
+
+    if (oldChoice && oldChoice === choice) return;
 
     if (!existing) {
       await InsertVoteCurrent.run();
-      // instant highlight
-      await storeValue("myCurrentChoice", choice);
 
+      try {
+        await InsertVoteHistory.run();
+      } catch (e) {
+        showAlert(`InsertVoteHistory failed: ${e?.message || e}`, "error");
+      }
+
+      await storeValue("myCurrentChoice", choice);
       await VotesFetch.refresh();
       showAlert(`Voted: ${choice}`, "success");
       return;
@@ -82,9 +131,14 @@ export default {
 
     await storeValue("voteRowIndex", rowIndex);
     await UpdateVoteCurrent.run();
-    // instant highlight
-    await storeValue("myCurrentChoice", choice);
 
+    try {
+      await InsertVoteHistory.run();
+    } catch (e) {
+      showAlert(`InsertVoteHistory failed: ${e?.message || e}`, "error");
+    }
+
+    await storeValue("myCurrentChoice", choice);
     await VotesFetch.refresh();
     showAlert(`Updated to: ${choice}`, "success");
   }

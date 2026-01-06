@@ -1,8 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 42,
-  "bottomRowBeforeCollapse": 43,
+  "bottomRow": 156,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -12,54 +11,42 @@
     },
     {
       "key": "borderRadius"
-    },
-    {
-      "key": "text"
-    },
-    {
-      "key": "isVisible"
     }
   ],
-  "dynamicHeight": "FIXED",
-  "dynamicPropertyPathList": [
-    {
-      "key": "isVisible"
-    }
-  ],
+  "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
-  "fontSize": "1rem",
-  "fontStyle": "BOLD",
+  "fontSize": "1.25rem",
+  "fontStyle": "BOLD,ITALIC",
   "isLoading": false,
-  "isVisible": "{{ !!Dropdown_Game.selectedOptionValue }}\n",
-  "key": "foe4ajeg9x",
-  "leftColumn": 12,
+  "isVisible": true,
+  "key": "3cpyc7b3q4",
+  "leftColumn": 2,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 38,
-  "mobileLeftColumn": 2,
-  "mobileRightColumn": 18,
-  "mobileTopRow": 34,
+  "mobileBottomRow": 156,
+  "mobileLeftColumn": 19,
+  "mobileRightColumn": 35,
+  "mobileTopRow": 152,
   "needsErrorInfo": false,
-  "originalBottomRow": 42,
-  "originalTopRow": 37,
+  "originalBottomRow": 157,
+  "originalTopRow": 152,
   "overflow": "NONE",
   "parentColumnSpace": 6.84375,
   "parentId": "0",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 52,
+  "rightColumn": 63,
   "shouldTruncate": false,
-  "text": "{{ appsmith.store.pollCountdownText || \"\" }}",
+  "text": "QR code for Payment",
   "textAlign": "CENTER",
-  "textColor": "#ec4899",
-  "topRow": 37,
-  "topRowBeforeCollapse": 35,
+  "textColor": "#1e3a8a",
+  "topRow": 152,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "hn8oagx204",
-  "widgetName": "Text_PollCountdown"
+  "widgetId": "7bqjaclc1m",
+  "widgetName": "Text1"
 }

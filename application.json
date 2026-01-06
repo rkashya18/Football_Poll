@@ -11,8 +11,8 @@
       "colorStyle": "light",
       "logoAssetId": "",
       "logoConfiguration": "logoAndApplicationTitle",
-      "navStyle": "sidebar",
-      "orientation": "side",
+      "navStyle": "stacked",
+      "orientation": "top",
       "position": "static",
       "showNavbar": true,
       "showSignIn": true
@@ -26,6 +26,11 @@
   "applicationVersion": 2,
   "collapseInvisibleWidgets": true,
   "color": "#F1DEFF",
+  "embedSetting": {
+    "height": "720px",
+    "showNavigationBar": true,
+    "width": "1024px"
+  },
   "evaluationVersion": 2,
   "icon": "yen",
   "pages": [
@@ -53,8 +58,8 @@
       "colorStyle": "light",
       "logoAssetId": "",
       "logoConfiguration": "logoAndApplicationTitle",
-      "navStyle": "sidebar",
-      "orientation": "side",
+      "navStyle": "stacked",
+      "orientation": "top",
       "position": "static",
       "showNavbar": true,
       "showSignIn": true

@@ -14,6 +14,8 @@ export default {
     await storeValue("loggedInUserName", null);
     await storeValue("isAdmin", false);
     await storeValue("role", null);
+		await storeValue("sessionStartedAt", Date.now());
+
 
     showAlert("Logged out successfully.", "success");
     navigateTo("LoginPage");

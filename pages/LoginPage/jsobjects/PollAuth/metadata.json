@@ -1,0 +1,11 @@
+{
+  "gitSyncId": "694e5865c148916db7d99c87_8381dfba-9aec-4aff-ba33-380022293dd7",
+  "id": "LoginPage_PollAuth",
+  "unpublishedCollection": {
+    "name": "PollAuth",
+    "pageId": "LoginPage",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": []
+  }
+}
