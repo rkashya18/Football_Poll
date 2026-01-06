@@ -1,0 +1,11 @@
+{
+  "gitSyncId": "694e5865c148916db7d99c87_0c9cbfe8-1569-47f2-945b-0123caa804d1",
+  "id": "PlayerPollPage_VotesFetch",
+  "unpublishedCollection": {
+    "name": "VotesFetch",
+    "pageId": "PlayerPollPage",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": []
+  }
+}

@@ -2,13 +2,15 @@ export default {
   intervalId: null,
 
   start() {
-    if (this.intervalId) return; // already running
+    this.stop();
+
+    // run once immediately
+    VotesFetch.refresh();
 
     this.intervalId = setInterval(() => {
-      if (Dropdown_Game.selectedOptionValue) {
-        GetVotesCurrent.run();
-      }
-    }, 5000);
+      if (!Dropdown_Game.selectedOptionValue) return;
+      VotesFetch.refresh();
+    }, 1000);
   },
 
   stop() {

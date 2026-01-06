@@ -1,0 +1,65 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 42,
+  "bottomRowBeforeCollapse": 43,
+  "dynamicBindingPathList": [
+    {
+      "key": "truncateButtonColor"
+    },
+    {
+      "key": "fontFamily"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "text"
+    },
+    {
+      "key": "isVisible"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "isVisible"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "fontSize": "1rem",
+  "fontStyle": "BOLD",
+  "isLoading": false,
+  "isVisible": "{{ !!Dropdown_Game.selectedOptionValue }}\n",
+  "key": "foe4ajeg9x",
+  "leftColumn": 12,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 38,
+  "mobileLeftColumn": 2,
+  "mobileRightColumn": 18,
+  "mobileTopRow": 34,
+  "needsErrorInfo": false,
+  "originalBottomRow": 45,
+  "originalTopRow": 41,
+  "overflow": "NONE",
+  "parentColumnSpace": 6.84375,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 52,
+  "shouldTruncate": false,
+  "text": "{{ appsmith.store.pollCountdownText || \"\" }}",
+  "textAlign": "CENTER",
+  "textColor": "#ec4899",
+  "topRow": 37,
+  "topRowBeforeCollapse": 35,
+  "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "type": "TEXT_WIDGET",
+  "version": 1,
+  "widgetId": "hn8oagx204",
+  "widgetName": "Text_PollCountdown"
+}

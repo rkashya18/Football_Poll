@@ -1,5 +1,5 @@
 {
-  "gitSyncId": "694a47a08fe0a04f7163f864_3e3ebdfd-7fd4-4a74-b59f-f2a776946578",
+  "gitSyncId": "694e5865c148916db7d99c87_24bbe15b-be9b-4c64-8fee-8fcc0f49c829",
   "id": "PlayerPollPage_AutoRefreshVotes.stop",
   "pluginId": "js-plugin",
   "pluginType": "JS",
@@ -25,7 +25,7 @@
     "fullyQualifiedName": "AutoRefreshVotes.stop",
     "name": "stop",
     "pageId": "PlayerPollPage",
-    "runBehaviour": "MANUAL",
-    "userSetOnLoad": false
+    "runBehaviour": "ON_PAGE_LOAD",
+    "userSetOnLoad": true
   }
 }

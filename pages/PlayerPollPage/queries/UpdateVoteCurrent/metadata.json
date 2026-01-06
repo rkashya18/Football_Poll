@@ -1,5 +1,5 @@
 {
-  "gitSyncId": "694a47a08fe0a04f7163f864_b9fa08a2-3edd-4452-ab3f-4834ab476e94",
+  "gitSyncId": "694e5865c148916db7d99c87_d6144333-4d10-48a7-a4bf-b9c23b499550",
   "id": "PlayerPollPage_UpdateVoteCurrent",
   "pluginId": "google-sheets-plugin",
   "pluginType": "SAAS",
@@ -29,7 +29,7 @@
           "data": ""
         },
         "rowObjects": {
-          "data": "{{\n  {\n    rowIndex: parseInt(String(appsmith.store.voteRowIndex ?? \"\").trim(), 10),\n    GameID: String(Dropdown_Game.selectedOptionValue ?? \"\").trim(),\n    UserID: String(Dropdown_User.selectedOptionValue ?? \"\").trim(),\n    Choice: String(appsmith.store.pendingChoice ?? \"\").trim(),\n    VoteTime: moment().format(\"YYYY-MM-DD HH:mm:ss\"),\n    LastUpdated: moment().format(\"YYYY-MM-DD HH:mm:ss\"),\n    VoteOrder: String(Date.now())\n  }\n}}\n"
+          "data": "{{\n  {\n    rowIndex: parseInt(String(appsmith.store.voteRowIndex ?? \"\").trim(), 10),\n    GameID: String(Dropdown_Game.selectedOptionValue ?? \"\").trim(),\n    UserID: String(appsmith.store.loggedInUserId ?? \"\").trim(),\n    Choice: String(appsmith.store.pendingChoice ?? \"\").trim(),\n    VoteTime: moment().format(\"YYYY-MM-DD HH:mm:ss\"),\n    LastUpdated: moment().format(\"YYYY-MM-DD HH:mm:ss\"),\n    VoteOrder: String(Date.now())\n  }\n}}\n"
         },
         "sheetName": {
           "data": "Votes_Current"
@@ -66,7 +66,7 @@
     ],
     "name": "UpdateVoteCurrent",
     "pageId": "PlayerPollPage",
-    "runBehaviour": "ON_PAGE_LOAD",
-    "userSetOnLoad": true
+    "runBehaviour": "MANUAL",
+    "userSetOnLoad": false
   }
 }

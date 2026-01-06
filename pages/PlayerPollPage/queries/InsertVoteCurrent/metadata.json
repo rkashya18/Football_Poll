@@ -1,5 +1,5 @@
 {
-  "gitSyncId": "694a47a08fe0a04f7163f864_85d9f57a-0f54-47b4-8b05-24b8645849e8",
+  "gitSyncId": "694e5865c148916db7d99c87_c1e235d2-c8d8-4ce7-bee3-146ab6460927",
   "id": "PlayerPollPage_InsertVoteCurrent",
   "pluginId": "google-sheets-plugin",
   "pluginType": "SAAS",
@@ -29,7 +29,7 @@
           "data": ""
         },
         "rowObjects": {
-          "data": "{{\n  {\n    GameID: String(Dropdown_Game.selectedOptionValue ?? \"\").trim(),\n    UserID: String(Dropdown_User.selectedOptionValue ?? \"\").trim(),\n    Choice: String(appsmith.store.pendingChoice ?? \"\").trim(),\n    VoteTime: moment().format(\"YYYY-MM-DD HH:mm:ss\"),\n    LastUpdated: moment().format(\"YYYY-MM-DD HH:mm:ss\"),\n    VoteOrder: String(Date.now())\n  }\n}}\n"
+          "data": "{{\n  {\n    GameID: String(Dropdown_Game.selectedOptionValue ?? \"\").trim(),\n    UserID: String(appsmith.store.loggedInUserId ?? \"\").trim(),\n    Choice: String(appsmith.store.pendingChoice ?? \"\").trim(),\n    VoteTime: moment().format(\"YYYY-MM-DD HH:mm:ss\"),\n    LastUpdated: moment().format(\"YYYY-MM-DD HH:mm:ss\"),\n    VoteOrder: String(Date.now())\n  }\n}}\n"
         },
         "sheetName": {
           "data": "Votes_Current"

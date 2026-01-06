@@ -1,5 +1,5 @@
 {
-  "gitSyncId": "69590eac6c1ae66fe697eb01_b7f43399-a6e4-48e9-ad4f-13fab1dac4f9",
+  "gitSyncId": "694e5865c148916db7d99c87_c9ffcec2-1dd6-40ff-9750-523abb2057d6",
   "id": "PlayerPollPage_PollAuth.logout",
   "pluginId": "js-plugin",
   "pluginType": "JS",
@@ -25,7 +25,7 @@
     "fullyQualifiedName": "PollAuth.logout",
     "name": "logout",
     "pageId": "PlayerPollPage",
-    "runBehaviour": "AUTOMATIC",
-    "userSetOnLoad": true
+    "runBehaviour": "MANUAL",
+    "userSetOnLoad": false
   }
 }

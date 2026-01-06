@@ -1,5 +1,5 @@
 {
-  "gitSyncId": "694a47a08fe0a04f7163f864_3ec9b95c-8b64-4994-b10e-9f67ddf134d5",
+  "gitSyncId": "694e5865c148916db7d99c87_f3fe6ec4-7ab8-4c19-821f-e6d69ff4f3b3",
   "id": "PlayerPollPage_GetGames",
   "pluginId": "google-sheets-plugin",
   "pluginType": "SAAS",
@@ -15,7 +15,7 @@
         },
         "pagination": {
           "data": {
-            "limit": "100",
+            "limit": "1000",
             "offset": "0"
           }
         },

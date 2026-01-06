@@ -1,0 +1,72 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 58,
+  "boxShadow": "none",
+  "buttonColor": "#eab308",
+  "buttonVariant": "{{ (appsmith.store.myCurrentChoice || \"\") === \"PAID\" ? \"PRIMARY\" : \"SECONDARY\" }}\n\n",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "isDisabled"
+    },
+    {
+      "key": "tooltip"
+    },
+    {
+      "key": "buttonVariant"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    },
+    {
+      "key": "isDisabled"
+    },
+    {
+      "key": "buttonVariant"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "iconAlign": "left",
+  "iconName": "dollar",
+  "isDefaultClickDisabled": true,
+  "isDisabled": "{{ !!VoteActions.disableReason() }}\n",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "qsxj5pg11d",
+  "leftColumn": 32,
+  "minWidth": 120,
+  "mobileBottomRow": 41,
+  "mobileLeftColumn": 34,
+  "mobileRightColumn": 50,
+  "mobileTopRow": 37,
+  "needsErrorInfo": false,
+  "onClick": "{{ VoteActions.submit(\"PAID\") }}",
+  "originalBottomRow": 58,
+  "originalTopRow": 45,
+  "parentColumnSpace": 6.84375,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 54,
+  "text": "Paid",
+  "tooltip": "{{ VoteActions.disableReason() }}",
+  "topRow": 45,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "vg8nb9ok7v",
+  "widgetName": "Button_Paid"
+}
