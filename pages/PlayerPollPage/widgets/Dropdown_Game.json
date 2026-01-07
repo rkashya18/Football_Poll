@@ -2,9 +2,9 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 28,
+  "bottomRow": 26,
   "boxShadow": "none",
-  "defaultOptionValue": "GREEN",
+  "defaultOptionValue": "",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -53,8 +53,8 @@
   "onOptionChange": "{{\n  // clear the highlighted choice until fresh votes come back\n  storeValue(\"myCurrentChoice\", \"\");\n\n  // refresh votes + restart auto polling\n  VotesFetch.refresh();\n  AutoRefreshVotes.start();\n\n  // restart countdown for the newly selected game\n  Countdown.start();\n}}\n",
   "optionLabel": "label",
   "optionValue": "value",
-  "originalBottomRow": 28,
-  "originalTopRow": 21,
+  "originalBottomRow": 26,
+  "originalTopRow": 19,
   "parentColumnSpace": 6.84375,
   "parentId": "0",
   "parentRowSpace": 10,
@@ -64,7 +64,7 @@
   "rightColumn": 62,
   "serverSideFiltering": false,
   "sourceData": "{{\n  (GetGames.data || [])\n    .filter(g => String(g.IsClosed).toUpperCase() !== \"TRUE\")\n    .map(g => ({\n      label: `${g.GameID} — ${moment(g.GameDate).format(\"DD-MMM\")} — ${g.Location || \"\"}`,\n      value: g.GameID\n    }))\n}}",
-  "topRow": 21,
+  "topRow": 19,
   "type": "SELECT_WIDGET",
   "version": 1,
   "widgetId": "x4ljq8pfiu",

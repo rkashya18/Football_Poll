@@ -6,8 +6,8 @@ export default {
 
     this.interval = setInterval(() => {
       storeValue("nowTick", Date.now());
-      GetGames.run(); // 🔑 refresh games every tick
-    }, 5000);
+      // ✅ removed: GetGames.run();
+    }, 1000);
   },
 
   stop() {

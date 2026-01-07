@@ -1,0 +1,11 @@
+{
+  "gitSyncId": "694e5865c148916db7d99c87_22d8b217-b8bc-45a4-abbc-21d522ca3f96",
+  "id": "PlayerPollPage_InitGames",
+  "unpublishedCollection": {
+    "name": "InitGames",
+    "pageId": "PlayerPollPage",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": []
+  }
+}

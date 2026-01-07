@@ -10,7 +10,7 @@ export default {
     this.intervalId = setInterval(() => {
       if (!Dropdown_Game.selectedOptionValue) return;
       VotesFetch.refresh();
-    }, 1000);
+    }, 2000);
   },
 
   stop() {

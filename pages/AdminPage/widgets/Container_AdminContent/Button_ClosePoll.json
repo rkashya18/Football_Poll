@@ -33,7 +33,7 @@
   "mobileRightColumn": 54,
   "mobileTopRow": 79,
   "needsErrorInfo": false,
-  "onClick": "{{\n  (() => {\n    const gid = Dropdown_CloseGame.selectedOptionValue;\n\n    if (!gid) {\n      showAlert(\"Select a GameID first.\", \"warning\");\n      return;\n    }\n\n    const rowNumber = GameUtils.gameRowNumber(GetGames.data, gid);\n\n    if (!rowNumber) {\n      showAlert(`Row number not found for GameID=${gid}`, \"error\");\n      return;\n    }\n\n    ClosePoll.run(\n      { rowNumber },\n      () => {\n        showAlert(`Poll ${gid} closed.`, \"success\");\n      },\n      (err) => {\n        showAlert(`Close failed: ${err?.message || err}`, \"error\");\n      }\n    );\n  })()\n}}\n",
+  "onClick": "{{\n  (() => {\n    const gid = Dropdown_CloseGame.selectedOptionValue;\n\n    if (!gid) {\n      showAlert(\"Select a GameID first.\", \"warning\");\n      return;\n    }\n\n    const rowNumber = GameUtils.gameRowNumber(GetGames.data, gid);\n\n    if (!rowNumber) {\n      showAlert(`Row number not found for GameID=${gid}`, \"error\");\n      return;\n    }\n\n    ClosePoll.run(\n      { rowNumber },\n      () => {\n        // ✅ NEW: refresh games immediately after a successful write\n        GetGames.run();\n\n        showAlert(`Poll ${gid} closed.`, \"success\");\n      },\n      (err) => {\n        showAlert(`Close failed: ${err?.message || err}`, \"error\");\n      }\n    );\n  })()\n}}\n",
   "originalBottomRow": 79,
   "originalTopRow": 74,
   "parentColumnSpace": 6.84375,

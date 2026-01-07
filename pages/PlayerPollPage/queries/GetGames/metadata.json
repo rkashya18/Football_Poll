@@ -72,7 +72,7 @@
     "dynamicBindingPathList": [],
     "name": "GetGames",
     "pageId": "PlayerPollPage",
-    "runBehaviour": "ON_PAGE_LOAD",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": true
   }
 }

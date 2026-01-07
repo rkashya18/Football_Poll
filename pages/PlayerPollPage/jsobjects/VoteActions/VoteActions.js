@@ -82,34 +82,65 @@ export default {
   },
 
   async submit(choiceRaw) {
-    const reason = this.disableReason();
-    if (reason) {
-      showAlert(reason, "warning");
-      return;
-    }
+    // ✅ MIN CHANGE: stop background refresh while we submit
+    try { await AutoRefreshVotes.stop(); } catch (e) {}
+    await storeValue("isSubmittingVote", true);
 
-    const choice = this.normalizeChoice(choiceRaw);
-    if (!["IN", "PAID", "DROPPING"].includes(choice)) {
-      showAlert("Invalid choice", "error");
-      return;
-    }
+    try {
+      const reason = this.disableReason();
+      if (reason) {
+        showAlert(reason, "warning");
+        return;
+      }
 
-    // ✅ gate PAID selection until user is IN
-    if (choice === "PAID" && !this.canSelectPaid()) {
-      showAlert("Please choose IN first. Then you can mark PAID.", "warning");
-      return;
-    }
+      const choice = this.normalizeChoice(choiceRaw);
+      if (!["IN", "PAID", "DROPPING"].includes(choice)) {
+        showAlert("Invalid choice", "error");
+        return;
+      }
 
-    const existing = this.myVoteRow();
-    const oldChoice = this.getChoiceFromRow(existing);
+      // ✅ gate PAID selection until user is IN
+      if (choice === "PAID" && !this.canSelectPaid()) {
+        showAlert("Please choose IN first. Then you can mark PAID.", "warning");
+        return;
+      }
 
-    await storeValue("oldChoice", oldChoice);
-    await storeValue("pendingChoice", choice);
+      const existing = this.myVoteRow();
+      const oldChoice = this.getChoiceFromRow(existing);
 
-    if (oldChoice && oldChoice === choice) return;
+      await storeValue("oldChoice", oldChoice);
+      await storeValue("pendingChoice", choice);
 
-    if (!existing) {
-      await InsertVoteCurrent.run();
+      // If no change, nothing to do (finally will restart polling)
+      if (oldChoice && oldChoice === choice) return;
+
+      if (!existing) {
+        await InsertVoteCurrent.run();
+
+        try {
+          await InsertVoteHistory.run();
+        } catch (e) {
+          showAlert(`InsertVoteHistory failed: ${e?.message || e}`, "error");
+        }
+
+        await storeValue("myCurrentChoice", choice);
+
+        // ✅ MIN CHANGE: small delay avoids stale read right after write
+        await new Promise(r => setTimeout(r, 600));
+        await VotesFetch.refresh();
+
+        showAlert(`Voted: ${choice}`, "success");
+        return;
+      }
+
+      const rowIndex = this.myVoteRowIndex();
+      if (rowIndex === null) {
+        showAlert("Could not locate your vote row to update.", "error");
+        return;
+      }
+
+      await storeValue("voteRowIndex", rowIndex);
+      await UpdateVoteCurrent.run();
 
       try {
         await InsertVoteHistory.run();
@@ -118,28 +149,16 @@ export default {
       }
 
       await storeValue("myCurrentChoice", choice);
+
+      // ✅ MIN CHANGE: small delay avoids stale read right after write
+      await new Promise(r => setTimeout(r, 600));
       await VotesFetch.refresh();
-      showAlert(`Voted: ${choice}`, "success");
-      return;
+
+      showAlert(`Updated to: ${choice}`, "success");
+    } finally {
+      // ✅ MIN CHANGE: always restart polling and clear flag
+      await storeValue("isSubmittingVote", false);
+      try { await AutoRefreshVotes.start(); } catch (e) {}
     }
-
-    const rowIndex = this.myVoteRowIndex();
-    if (rowIndex === null) {
-      showAlert("Could not locate your vote row to update.", "error");
-      return;
-    }
-
-    await storeValue("voteRowIndex", rowIndex);
-    await UpdateVoteCurrent.run();
-
-    try {
-      await InsertVoteHistory.run();
-    } catch (e) {
-      showAlert(`InsertVoteHistory failed: ${e?.message || e}`, "error");
-    }
-
-    await storeValue("myCurrentChoice", choice);
-    await VotesFetch.refresh();
-    showAlert(`Updated to: ${choice}`, "success");
   }
 };
