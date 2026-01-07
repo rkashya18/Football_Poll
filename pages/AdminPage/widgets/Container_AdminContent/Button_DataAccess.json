@@ -1,0 +1,54 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 91,
+  "boxShadow": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+  "buttonColor": "#dd0808",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "iconAlign": "left",
+  "iconName": "database",
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "un6i70wo5j",
+  "leftColumn": 3,
+  "minWidth": 120,
+  "mobileBottomRow": 84,
+  "mobileLeftColumn": 19,
+  "mobileRightColumn": 35,
+  "mobileTopRow": 80,
+  "needsErrorInfo": false,
+  "onClick": "{{ navigateTo(\"https://docs.google.com/spreadsheets/d/1LbCU3YMEbsM9ZcRK1UmrqCPoGLSPEi1mCpZawg_qnYo/edit?usp=sharing\", {}, \"NEW_WINDOW\") }}",
+  "parentColumnSpace": 6.103515625,
+  "parentId": "cj1pk3zki1",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 61,
+  "text": "Click here to view log data (read only)",
+  "topRow": 80,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "utiewbbrs4",
+  "widgetName": "Button_DataAccess"
+}
