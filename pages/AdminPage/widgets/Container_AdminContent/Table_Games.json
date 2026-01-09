@@ -4,7 +4,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 64,
+  "bottomRow": 65,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,
@@ -45,9 +45,10 @@
     "CreatedAt",
     "IsClosed",
     "ClosedAt",
-    "rowIndex"
+    "rowIndex",
+    "FineAmount"
   ],
-  "columnUpdatedAt": 1766571225455,
+  "columnUpdatedAt": 1767939716002,
   "columnWidthMap": {
     "GameID": 137
   },
@@ -113,6 +114,9 @@
     },
     {
       "key": "primaryColumns.rowIndex.computedValue"
+    },
+    {
+      "key": "primaryColumns.FineAmount.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -242,6 +246,40 @@
       "label": "EndTime",
       "notation": "standard",
       "originalId": "EndTime",
+      "sticky": "",
+      "textColor": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "FineAmount": {
+      "alias": "FineAmount",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = Table_Games.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"FineAmount\"])) : FineAmount })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "FineAmount",
+      "index": 13,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "FineAmount",
+      "notation": "standard",
+      "originalId": "FineAmount",
       "sticky": "",
       "textColor": "",
       "textSize": "0.875rem",
@@ -632,7 +670,7 @@
   "serverSidePaginationEnabled": false,
   "tableData": "{{\n  (GetGames.data || []).filter(\n    g => String(g.IsClosed).toUpperCase() !== \"TRUE\"\n  )\n}}\n",
   "textSize": "0.875rem",
-  "topRow": 44,
+  "topRow": 45,
   "totalRecordsCount": 0,
   "type": "TABLE_WIDGET_V2",
   "version": 2,

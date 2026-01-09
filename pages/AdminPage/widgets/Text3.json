@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 24,
+  "bottomRow": 15,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -11,42 +11,45 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "text"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
-  "fontSize": "1.25rem",
-  "fontStyle": "BOLD,ITALIC",
+  "fontSize": "1.875rem",
+  "fontStyle": "BOLD",
   "isLoading": false,
   "isVisible": true,
-  "key": "k8dwnsm6av",
-  "leftColumn": 10,
+  "key": "unh8laplp6",
+  "leftColumn": 39,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 6,
-  "mobileLeftColumn": 14,
-  "mobileRightColumn": 30,
-  "mobileTopRow": 2,
+  "mobileBottomRow": 16,
+  "mobileLeftColumn": 42,
+  "mobileRightColumn": 58,
+  "mobileTopRow": 12,
   "needsErrorInfo": false,
-  "originalBottomRow": 24,
-  "originalTopRow": 18,
+  "originalBottomRow": 15,
+  "originalTopRow": 10,
   "overflow": "NONE",
   "parentColumnSpace": 6.84375,
   "parentId": "0",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 55,
+  "rightColumn": 60,
   "shouldTruncate": false,
-  "text": "Admin credentials are required to host & close games !",
+  "text": "{{\"₹\" + \" \" +\n  (GetGames.data|| [])\n    .reduce((sum, row) => sum + (Number(row.FineAmount) || 0), 0)\n}}\n",
   "textAlign": "CENTER",
-  "textColor": "#ef4444",
-  "topRow": 18,
+  "textColor": "#565dc8",
+  "topRow": 10,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "ev0aoti92c",
-  "widgetName": "Text2"
+  "widgetId": "11r0ayp5bf",
+  "widgetName": "Text3"
 }

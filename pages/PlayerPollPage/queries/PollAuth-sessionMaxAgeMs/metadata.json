@@ -1,17 +1,12 @@
 {
-  "gitSyncId": "694e5865c148916db7d99c87_c9ffcec2-1dd6-40ff-9750-523abb2057d6",
-  "id": "PlayerPollPage_PollAuth.logout",
+  "gitSyncId": "694e5865c148916db7d99c87_588dfa7c-d8bd-4ee6-b85e-3c78d1d2d1a8",
+  "id": "PlayerPollPage_PollAuth.sessionMaxAgeMs",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
     "actionConfiguration": {
       "encodeParamsToggle": true,
-      "jsArguments": [
-        {
-          "name": "silent",
-          "value": "{{false}}"
-        }
-      ],
+      "jsArguments": [],
       "paginationType": "NONE",
       "timeoutInMillisecond": 10000
     },
@@ -27,8 +22,8 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "PollAuth.logout",
-    "name": "logout",
+    "fullyQualifiedName": "PollAuth.sessionMaxAgeMs",
+    "name": "sessionMaxAgeMs",
     "pageId": "PlayerPollPage",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false
