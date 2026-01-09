@@ -1,6 +1,8 @@
 {
   "animateLoading": true,
+  "backgroundColor": "#e0dede",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "borderWidth": "",
   "bottomRow": 15,
   "dynamicBindingPathList": [
     {
@@ -16,7 +18,7 @@
       "key": "text"
     }
   ],
-  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicHeight": "FIXED",
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
   "fontSize": "1.875rem",
@@ -33,8 +35,6 @@
   "mobileRightColumn": 58,
   "mobileTopRow": 12,
   "needsErrorInfo": false,
-  "originalBottomRow": 15,
-  "originalTopRow": 10,
   "overflow": "NONE",
   "parentColumnSpace": 6.84375,
   "parentId": "0",
@@ -46,7 +46,7 @@
   "text": "{{\"₹\" + \" \" +\n  (GetGames.data|| [])\n    .reduce((sum, row) => sum + (Number(row.FineAmount) || 0), 0)\n}}\n",
   "textAlign": "CENTER",
   "textColor": "#565dc8",
-  "topRow": 10,
+  "topRow": 9,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
