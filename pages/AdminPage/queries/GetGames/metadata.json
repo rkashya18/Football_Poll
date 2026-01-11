@@ -72,7 +72,7 @@
     "dynamicBindingPathList": [],
     "name": "GetGames",
     "pageId": "AdminPage",
-    "runBehaviour": "ON_PAGE_LOAD",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": true
   }
 }

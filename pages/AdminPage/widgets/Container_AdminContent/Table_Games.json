@@ -46,9 +46,10 @@
     "IsClosed",
     "ClosedAt",
     "rowIndex",
-    "FineAmount"
+    "FineAmount",
+    "Column_15"
   ],
-  "columnUpdatedAt": 1767939716002,
+  "columnUpdatedAt": 1768117940948,
   "columnWidthMap": {
     "GameID": 137
   },
@@ -117,6 +118,9 @@
     },
     {
       "key": "primaryColumns.FineAmount.computedValue"
+    },
+    {
+      "key": "primaryColumns.Column_15.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -178,6 +182,40 @@
       "label": "ClosedAt",
       "notation": "standard",
       "originalId": "ClosedAt",
+      "sticky": "",
+      "textColor": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "Column_15": {
+      "alias": "Column-15",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = Table_Games.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"Column-15\"])) : Column-15 })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "Column_15",
+      "index": 14,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Column-15",
+      "notation": "standard",
+      "originalId": "Column-15",
       "sticky": "",
       "textColor": "",
       "textSize": "0.875rem",

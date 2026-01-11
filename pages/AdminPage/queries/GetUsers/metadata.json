@@ -72,7 +72,7 @@
     "dynamicBindingPathList": [],
     "name": "GetUsers",
     "pageId": "AdminPage",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": true
   }
 }
