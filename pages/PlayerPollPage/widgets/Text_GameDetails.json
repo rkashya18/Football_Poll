@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 32,
+  "bottomRow": 36,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -24,7 +24,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "foe4ajeg9x",
-  "leftColumn": 1,
+  "leftColumn": 13,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -33,7 +33,7 @@
   "mobileRightColumn": 17,
   "mobileTopRow": 27,
   "needsErrorInfo": false,
-  "originalBottomRow": 32,
+  "originalBottomRow": 36,
   "originalTopRow": 28,
   "overflow": "NONE",
   "parentColumnSpace": 6.84375,
@@ -41,7 +41,7 @@
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
+  "rightColumn": 50,
   "shouldTruncate": false,
   "text": "{{\n  (() => {\n    const gid = Dropdown_Game.selectedOptionValue;\n    if (!gid) return \"Select a game to see details.\";\n\n    const g = (GetGames.data || []).find(x => String(x.GameID) === String(gid));\n    if (!g) return \"Game details not found.\";\n\n    const dateTxt = g.GameDate ? moment(g.GameDate).format(\"ddd, DD-MMM-YYYY\") : \"\";\n    const fromTxt = g.StartTime ? String(g.StartTime) : \"\";\n    const toTxt   = g.EndTime ? String(g.EndTime) : \"\";\n    const venueTxt = g.Venue ? String(g.Venue) : (g.Location ? String(g.Location) : \"\");\n\n    const timeTxt =\n      fromTxt && toTxt ? `${fromTxt} to ${toTxt}` :\n      fromTxt ? `From ${fromTxt}` :\n      toTxt ? `To ${toTxt}` : \"\";\n\n    const parts = [\n      dateTxt ? `📅 ${dateTxt}` : \"\",\n      timeTxt ? `⏰ ${timeTxt}` : \"\",\n      venueTxt ? `📍 Location ${venueTxt}` : \"\"\n    ].filter(Boolean);\n\n    return parts.length ? parts.join(\"    \") : \"No details available for this game.\";\n  })()\n}}\n",
   "textAlign": "CENTER",
