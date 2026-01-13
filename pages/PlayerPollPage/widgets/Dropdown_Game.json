@@ -63,7 +63,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 62,
   "serverSideFiltering": false,
-  "sourceData": "{{\n  (GetGames.data || [])\n    .filter(g => String(g.IsClosed).toUpperCase() !== \"TRUE\")\n    .map(g => ({\n      label: `${g.GameID} — ${moment(g.GameDate).format(\"DD-MMM\")} — ${g.Location || \"\"}`,\n      value: g.GameID\n    }))\n}}",
+  "sourceData": "{{\n  ((appsmith.store.games && appsmith.store.games.length)\n      ? appsmith.store.games\n      : (GetGames.data || [])\n  )\n    .filter(g => String(g.IsClosed).toUpperCase() !== \"TRUE\")\n    .map(g => ({\n      label: `${g.GameID} — ${moment(g.GameDate).format(\"DD-MMM\")} — ${g.Location || \"\"}`,\n      value: g.GameID\n    }))\n}}\n",
   "topRow": 19,
   "type": "SELECT_WIDGET",
   "version": 1,

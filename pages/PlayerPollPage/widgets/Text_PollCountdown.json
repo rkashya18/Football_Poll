@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 42,
+  "bottomRow": 39,
   "bottomRowBeforeCollapse": 43,
   "dynamicBindingPathList": [
     {
@@ -42,8 +42,8 @@
   "mobileRightColumn": 18,
   "mobileTopRow": 34,
   "needsErrorInfo": false,
-  "originalBottomRow": 42,
-  "originalTopRow": 37,
+  "originalBottomRow": 39,
+  "originalTopRow": 34,
   "overflow": "NONE",
   "parentColumnSpace": 6.84375,
   "parentId": "0",
@@ -55,7 +55,7 @@
   "text": "{{ appsmith.store.pollCountdownText || \"\" }}",
   "textAlign": "CENTER",
   "textColor": "#ec4899",
-  "topRow": 37,
+  "topRow": 34,
   "topRowBeforeCollapse": 35,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",

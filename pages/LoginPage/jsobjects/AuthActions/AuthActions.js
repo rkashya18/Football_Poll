@@ -9,7 +9,6 @@ export default {
       return { ok: false, error: "Email missing" };
     }
 
-    // SendOtp is your API query pointing to the Worker URL
     const res = await SendOtp.run();
 
     if (!res?.ok) {
@@ -19,6 +18,22 @@ export default {
 
     showAlert("If this email is registered, an OTP has been sent.", "success");
     return res;
+  },
+
+  // ✅ NEW: fetch & store games once post-login (Option B)
+  async preloadGames() {
+    try {
+      const games = await GetGames.run(); // IMPORTANT: use return value, not GetGames.data
+      await storeValue("games", Array.isArray(games) ? games : []);
+      await storeValue("gamesLoadedAt", Date.now());
+      return { ok: true, count: (games || []).length };
+    } catch (e) {
+      // Don't block login; just warn and keep going
+      await storeValue("games", []);
+      await storeValue("gamesLoadedAt", Date.now());
+      showAlert("Logged in, but failed to load games. Please refresh once.", "warning");
+      return { ok: false, error: e?.message || "Failed to load games" };
+    }
   },
 
   async verifyOtp() {
@@ -38,7 +53,6 @@ export default {
       return { ok: false, error: "OTP missing" };
     }
 
-    // VerifyOtp is your API query pointing to the Worker URL
     const res = await VerifyOtp.run();
 
     if (!res?.ok) {
@@ -53,8 +67,11 @@ export default {
     await storeValue("isAdmin", !!res.isAdmin);
     await storeValue("role", res.isAdmin ? "admin" : "user");
 
-    // ✅ Start session timestamps + isLoggedIn (your new PollAuth)
+    // Start session timestamps + isLoggedIn
     await PollAuth.startSession();
+
+    // ✅ Preload games BEFORE navigating (Option B)
+    await this.preloadGames();
 
     navigateTo("PlayerPollPage");
     return res;
@@ -65,7 +82,6 @@ export default {
       return;
     }
 
-    // Clear any partial state + redirect
     await storeValue("isLoggedIn", false);
     await storeValue("sessionStartedAt", null);
     await storeValue("lastActiveAt", null);
@@ -76,11 +92,18 @@ export default {
     await storeValue("isAdmin", false);
     await storeValue("role", null);
 
+    // Optional: clear cached games on forced redirect
+    await storeValue("games", []);
+    await storeValue("gamesLoadedAt", null);
+
     navigateTo("LoginPage");
   },
 
   async logout() {
-    // Use PollAuth for consistency
     await PollAuth.logout();
+
+    // Optional: clear cached games on logout
+    await storeValue("games", []);
+    await storeValue("gamesLoadedAt", null);
   }
 };
