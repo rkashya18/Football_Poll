@@ -29,7 +29,7 @@
           "data": ""
         },
         "rowObjects": {
-          "data": "{{\n  {\n    rowIndex: parseInt(String(appsmith.store.voteRowIndex ?? \"\").trim(), 10),\n    GameID: String(Dropdown_Game.selectedOptionValue ?? \"\").trim(),\n    UserID: String(appsmith.store.loggedInUserId ?? \"\").trim(),\n    Choice: String(appsmith.store.pendingChoice ?? \"\").trim(),\n    VoteTime: moment().format(\"YYYY-MM-DD HH:mm:ss\"),\n    LastUpdated: moment().format(\"YYYY-MM-DD HH:mm:ss\"),\n    VoteOrder: String(Date.now())\n  }\n}}\n"
+          "data": "{{\n  (() => {\n    const oldChoice = String(appsmith.store.oldChoice ?? \"\").trim().toUpperCase();\n    const newChoice = String(appsmith.store.pendingChoice ?? \"\").trim().toUpperCase();\n\n    const shouldResetRank = (oldChoice === \"DROPPING\" && newChoice === \"IN\");\n\n    const base = {\n      rowIndex: parseInt(String(appsmith.store.voteRowIndex ?? \"\").trim(), 10),\n      GameID: String(Dropdown_Game.selectedOptionValue ?? \"\").trim(),\n      UserID: String(appsmith.store.loggedInUserId ?? \"\").trim(),\n      Choice: String(appsmith.store.pendingChoice ?? \"\").trim(),\n      LastUpdated: moment().format(\"YYYY-MM-DD HH:mm:ss\")\n    };\n\n    // Only include VoteTime/VoteOrder when you WANT re-ranking\n    return shouldResetRank\n      ? {\n          ...base,\n          VoteTime: moment().format(\"YYYY-MM-DD HH:mm:ss\"),\n          VoteOrder: String(Date.now())\n        }\n      : base;\n  })()\n}}\n"
         },
         "sheetName": {
           "data": "Votes_Current"
