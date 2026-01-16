@@ -39,7 +39,7 @@
   "iconAlign": "left",
   "iconName": "dollar",
   "isDefaultClickDisabled": true,
-  "isDisabled": "{{ !!VoteActions.disableReason() || !VoteActions.canSelectPaid() }}\n",
+  "isDisabled": "{{\n  !!VoteActions.disableReason() ||\n  (\n    !VoteActions.canSelectPaid() &&\n    (appsmith.store.myCurrentChoice || \"\") !== \"PAID\"\n  )\n}}\n",
   "isLoading": false,
   "isVisible": true,
   "key": "qsxj5pg11d",

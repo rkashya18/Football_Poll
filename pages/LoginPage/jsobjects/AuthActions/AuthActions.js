@@ -16,7 +16,7 @@ export default {
       return res || { ok: false, error: "Failed to send OTP" };
     }
 
-    showAlert("If this email is registered, an OTP has been sent.", "success");
+    showAlert("An OTP has been sent to the email selected by you ! ", "success");
     return res;
   },
 
@@ -28,10 +28,21 @@ export default {
       await storeValue("gamesLoadedAt", Date.now());
       return { ok: true, count: (games || []).length };
     } catch (e) {
-      // Don't block login; just warn and keep going
-      await storeValue("games", []);
+      // ✅ If games already exist (cached or loaded elsewhere), don't show the warning
+      const existing = appsmith.store.games;
+
       await storeValue("gamesLoadedAt", Date.now());
-      showAlert("Logged in, but failed to load games. Please refresh once.", "warning");
+
+      if (Array.isArray(existing) && existing.length > 0) {
+        return { ok: true, count: existing.length, source: "cache" };
+      }
+
+      // Otherwise, genuinely no games available → warn
+      await storeValue("games", []);
+      showAlert(
+        "Logged in, but failed to load games. Please refresh once.",
+        "warning"
+      );
       return { ok: false, error: e?.message || "Failed to load games" };
     }
   },
