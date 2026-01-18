@@ -40,7 +40,7 @@ export default {
       // Otherwise, genuinely no games available → warn
       await storeValue("games", []);
       showAlert(
-        "Logged in, but failed to load games. Please refresh once.",
+        "Loading Games. Please refresh once in case no games are shown.",
         "warning"
       );
       return { ok: false, error: e?.message || "Failed to load games" };

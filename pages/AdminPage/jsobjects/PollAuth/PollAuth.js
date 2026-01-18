@@ -34,6 +34,10 @@ export default {
     await storeValue("isAdmin", false);
     await storeValue("role", null);
 
+    // ✅ Fix 1: always lock AdminPage UI state on logout too
+    await storeValue("isAdminUnlocked", false);
+    await storeValue("adminUserID", "");
+
     showAlert(message, "warning");
     navigateTo("LoginPage");
   },
@@ -64,6 +68,11 @@ export default {
   },
 
   async initAdminPage() {
+    // ✅ Fix 1: lock AdminPage content every time the page is opened
+    // This prevents stale store values from showing Container_AdminContent
+    await storeValue("isAdminUnlocked", false);
+    await storeValue("adminUserID", "");
+
     const ok = await this.guardAdmin();
     if (!ok) return;
 
