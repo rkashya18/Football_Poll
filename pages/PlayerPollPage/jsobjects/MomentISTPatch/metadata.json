@@ -1,0 +1,16 @@
+{
+  "gitSyncId": "694e5865c148916db7d99c87_180f03c0-882f-47b8-9bd5-2062924ed1f4",
+  "id": "PlayerPollPage_MomentISTPatch",
+  "unpublishedCollection": {
+    "name": "MomentISTPatch",
+    "pageId": "PlayerPollPage",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "applied",
+        "value": "false"
+      }
+    ]
+  }
+}
