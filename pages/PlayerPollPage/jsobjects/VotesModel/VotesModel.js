@@ -1,100 +1,41 @@
 export default {
-  /* -----------------------------
-     Helpers
-  ----------------------------- */
-
+  // 1. Helper to clean up text
   normalizeChoice(c) {
     return String(c ?? "").trim().toUpperCase();
   },
 
-  // Convert VoteTime from Sheets into epoch milliseconds
+  // 2. Helper for sorting (Rank 1 vs Rank 2)
   toVoteTimeMs(vt) {
-    if (vt === null || vt === undefined || vt === "") return NaN;
-
+    if (!vt) return NaN;
+    if (typeof vt === 'number') return vt;
     const s = String(vt).trim();
-
-    // Epoch numbers (seconds or ms)
-    if (/^\d+$/.test(s)) {
-      const n = Number(s);
-      return s.length >= 13 ? n : n * 1000;
-    }
-
-    // Datetime strings
-    const m = moment(
-      s,
-      ["YYYY-MM-DD HH:mm:ss", "YYYY-MM-DD HH:mm", moment.ISO_8601],
-      true
-    );
-    if (m.isValid()) return m.valueOf();
-
-    // Fallback (non-strict)
-    const m2 = moment(s);
-    return m2.isValid() ? m2.valueOf() : NaN;
+    // Try to parse standard formats
+    const m = moment(s, ["YYYY-MM-DD HH:mm:ss", moment.ISO_8601], true);
+    return m.isValid() ? m.valueOf() : NaN;
   },
 
-  // ✅ IST display with milliseconds: DD-MMM-YYYY HH.mm.ss.SSS
-  // Uses the same proven correction approach: subtract 330 minutes.
-  formatISTWithMs(ms) {
-    if (!Number.isFinite(ms)) return "";
-    return moment(ms)
-      .subtract(330, "minutes")
-      .format("DD-MMM-YYYY HH.mm.ss.SSS");
-  },
-
-  /* -----------------------------
-     Current user vote
-  ----------------------------- */
-
-  getMyCurrentChoice() {
-    const gid = String(Dropdown_Game.selectedOptionValue ?? "").trim();
-    const uid = String(appsmith.store.loggedInUserId ?? "").trim();
-    if (!gid || !uid) return "";
-
-    const row = (GetVotesCurrent.data || []).find(v =>
-      String(v.GameID) === gid && String(v.UserID) === uid
-    );
-
-    const choice = row ? this.normalizeChoice(row.Choice) : "";
-    return ["IN", "PAID", "DROPPING"].includes(choice) ? choice : "";
-  },
-
-  /* -----------------------------
-     Hash helper (anti-blink)
-  ----------------------------- */
-
-  hash(obj) {
-    try {
-      return JSON.stringify(obj);
-    } catch (e) {
-      return String(Date.now());
-    }
-  },
-
-  /* -----------------------------
-     Build table data
-  ----------------------------- */
-
+  // 3. Build the List
   buildTableData() {
     const gid = Dropdown_Game.selectedOptionValue;
     if (!gid) return [];
 
+    // Get Users and Votes
     const usersById = Object.fromEntries(
       (GetUsers.data || []).map(u => [String(u.UserID), u])
     );
+    const votes = (GetVotesCurrent.data || []).filter(v => String(v.GameID) === String(gid));
 
-    const votes = (GetVotesCurrent.data || [])
-      .filter(v => String(v.GameID) === String(gid));
-
+    // Separate Eligible vs Others
     const eligible = votes.filter(v => {
       const c = this.normalizeChoice(v.Choice);
       return c === "IN" || c === "PAID";
     });
-
     const others = votes.filter(v => {
       const c = this.normalizeChoice(v.Choice);
       return !(c === "IN" || c === "PAID");
     });
 
+    // Sort and Format Eligible
     const rankedEligible = eligible
       .sort((a, b) => {
         const ta = this.toVoteTimeMs(a.VoteTime);
@@ -104,69 +45,76 @@ export default {
       })
       .map((v, i) => {
         const pos = i + 1;
-        const slot = pos <= 12 ? String(pos) : `WL-${pos - 12}`;
         const u = usersById[String(v.UserID)] || {};
-        const baseMs = this.toVoteTimeMs(v.VoteTime);
+        
+        // --- SIMPLE DISPLAY LOGIC ---
+        // If it's a string, just show it. If it's a date, un-shift it.
+        let displayTime = "";
+        if (v.VoteTime) {
+             if (typeof v.VoteTime === 'string') {
+                 displayTime = v.VoteTime.replace("T", " ").replace("Z", "").substring(0, 19);
+             } else {
+                 displayTime = moment(v.VoteTime).utc().format("YYYY-MM-DD HH:mm:ss");
+             }
+        }
+        // ----------------------------
 
         return {
           Rank: pos,
-          Slot: slot,
+          Slot: pos <= 12 ? String(pos) : `WL-${pos - 12}`,
           UserID: String(v.UserID),
           Name: u.Name || "",
           Status: this.normalizeChoice(v.Choice),
-
-          // ✅ what users will see (IST + milliseconds)
-          VoteTime: this.formatISTWithMs(baseMs),
-
-          // keep numeric for sorting/debug (hide this column in the table)
-          VoteTimeMs: baseMs
+          VoteTime: displayTime ? (displayTime + " IST") : "", 
+          VoteTimeMs: this.toVoteTimeMs(v.VoteTime)
         };
       });
 
+    // Format Others (Waitlist/Dropping)
     const mappedOthers = others.map(v => {
       const u = usersById[String(v.UserID)] || {};
-      const baseMs = this.toVoteTimeMs(v.VoteTime);
+      
+      let displayTime = "";
+      if (v.VoteTime) {
+           if (typeof v.VoteTime === 'string') {
+               displayTime = v.VoteTime.replace("T", " ").replace("Z", "").substring(0, 19);
+           } else {
+               displayTime = moment(v.VoteTime).utc().format("YYYY-MM-DD HH:mm:ss");
+           }
+      }
 
       return {
         Rank: "",
         Slot: "",
         UserID: String(v.UserID),
         Name: u.Name || "",
-        Status: this.normalizeChoice(v.Choice) || "",
-
-        VoteTime: this.formatISTWithMs(baseMs),
-        VoteTimeMs: baseMs
+        Status: this.normalizeChoice(v.Choice),
+        VoteTime: displayTime ? (displayTime + " IST") : "",
+        VoteTimeMs: this.toVoteTimeMs(v.VoteTime)
       };
     });
 
     return [...rankedEligible, ...mappedOthers];
   },
 
-  /* -----------------------------
-     Sync into store
-  ----------------------------- */
-
+  // 4. Force Write to Store (No Hashing, No Checks)
   async syncToStore() {
-    const myChoice = this.getMyCurrentChoice();
-
-    if ((appsmith.store.myCurrentChoice || "") !== myChoice) {
-      await storeValue("myCurrentChoice", myChoice);
-    }
-
     const tableData = this.buildTableData();
-    const newHash = this.hash(tableData);
-    const oldHash = appsmith.store.votesTableHash || "";
+    
+    // Always write the data. Never skip.
+    await storeValue("votesTableData", tableData);
+    
+    // Update myChoice for the buttons
+    const myChoice = this.getMyCurrentChoice();
+    await storeValue("myCurrentChoice", myChoice);
+  },
 
-    if (newHash !== oldHash) {
-      await storeValue("votesTableData", tableData);
-      await storeValue("votesTableHash", newHash);
-    }
-
-    // Return debug info (optional, helpful)
-    return {
-      rows: tableData.length,
-      myCurrentChoice: myChoice,
-      sampleRow: tableData[0] || null
-    };
+  // Helper for buttons
+  getMyCurrentChoice() {
+    const gid = String(Dropdown_Game.selectedOptionValue ?? "").trim();
+    const uid = String(appsmith.store.loggedInUserId ?? "").trim();
+    const row = (GetVotesCurrent.data || []).find(v => String(v.GameID) === gid && String(v.UserID) === uid);
+    const choice = row ? this.normalizeChoice(row.Choice) : "";
+    return ["IN", "PAID", "DROPPING"].includes(choice) ? choice : "";
   }
 };

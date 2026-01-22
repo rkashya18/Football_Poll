@@ -29,7 +29,7 @@
           "data": ""
         },
         "rowObjects": {
-          "data": "{{\n  {\n    GameID: String(Dropdown_Game.selectedOptionValue ?? \"\").trim(),\n    UserID: String(appsmith.store.loggedInUserId ?? \"\").trim(),\n    OldChoice: String(appsmith.store.oldChoice ?? \"\").trim(),\n    NewChoice: String(appsmith.store.pendingChoice ?? \"\").trim(),\n    ChangedAt: moment().format(\"YYYY-MM-DD HH:mm:ss\")\n  }\n}}"
+          "data": "{{\n  {\n    GameID: String(Dropdown_Game.selectedOptionValue ?? \"\").trim(),\n    UserID: String(appsmith.store.loggedInUserId ?? \"\").trim(),\n    OldChoice: String(appsmith.store.oldChoice ?? \"\").trim(),\n    NewChoice: String(appsmith.store.pendingChoice ?? \"\").trim(),\n    ChangedAt: appsmith.store.verifiedVoteTime\n  }\n}}"
         },
         "sheetName": {
           "data": "Votes_History"
