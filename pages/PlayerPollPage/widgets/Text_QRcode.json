@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 159,
+  "bottomRow": 158,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -43,10 +43,10 @@
   "text": "QR code for Payment",
   "textAlign": "CENTER",
   "textColor": "#1e3a8a",
-  "topRow": 155,
+  "topRow": 154,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
   "widgetId": "7bqjaclc1m",
-  "widgetName": "Text1"
+  "widgetName": "Text_QRcode"
 }

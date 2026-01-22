@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 55,
+  "bottomRow": 54,
   "boxShadow": "none",
   "buttonColor": "#eab308",
   "buttonVariant": "{{ (appsmith.store.myCurrentChoice || \"\") === \"PAID\" ? \"PRIMARY\" : \"SECONDARY\" }}\n\n",
@@ -64,7 +64,7 @@
   "rightColumn": 54,
   "text": "Paid",
   "tooltip": "{{ VoteActions.canSelectPaid() ? \"Mark yourself as Paid\" : \"Select IN first to enable PAID\" }}\n",
-  "topRow": 42,
+  "topRow": 41,
   "type": "BUTTON_WIDGET",
   "version": 1,
   "widgetId": "vg8nb9ok7v",

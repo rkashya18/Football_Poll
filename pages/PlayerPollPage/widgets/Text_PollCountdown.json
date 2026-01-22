@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 39,
+  "bottomRow": 38,
   "bottomRowBeforeCollapse": 43,
   "dynamicBindingPathList": [
     {
@@ -55,7 +55,7 @@
   "text": "{{ appsmith.store.pollCountdownText || \"\" }}",
   "textAlign": "CENTER",
   "textColor": "#ec4899",
-  "topRow": 34,
+  "topRow": 33,
   "topRowBeforeCollapse": 35,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",

@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 64,
+  "bottomRow": 63,
   "boxShadow": "none",
   "buttonColor": "#c51111",
   "buttonVariant": "{{ (appsmith.store.myCurrentChoice || \"\") === \"DROPPING\" ? \"PRIMARY\" : \"SECONDARY\" }}\n",
@@ -64,7 +64,7 @@
   "rightColumn": 56,
   "text": "Dropping",
   "tooltip": "{{ VoteActions.disableReason() }}",
-  "topRow": 57,
+  "topRow": 56,
   "type": "BUTTON_WIDGET",
   "version": 1,
   "widgetId": "vvj79cqewk",
