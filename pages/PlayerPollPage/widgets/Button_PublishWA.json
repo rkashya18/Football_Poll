@@ -1,0 +1,56 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 71,
+  "boxShadow": "none",
+  "buttonColor": "#48ad6d",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "iconAlign": "left",
+  "iconName": "chat",
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "pqyx33xn6u",
+  "leftColumn": 1,
+  "minWidth": 120,
+  "mobileBottomRow": 83,
+  "mobileLeftColumn": 1,
+  "mobileRightColumn": 17,
+  "mobileTopRow": 79,
+  "needsErrorInfo": false,
+  "onClick": "{{ PublishListWhatsapp.share() }}",
+  "originalBottomRow": 67,
+  "originalTopRow": 62,
+  "parentColumnSpace": 6.84375,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 60,
+  "text": "Publish List to Whatsapp",
+  "topRow": 66,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "cdirzbnw49",
+  "widgetName": "Button_PublishWA"
+}

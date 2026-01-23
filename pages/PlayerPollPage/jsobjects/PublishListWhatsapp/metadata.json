@@ -1,0 +1,11 @@
+{
+  "gitSyncId": "694e5865c148916db7d99c87_746f6ee9-31ff-40ab-9865-cf96ea659614",
+  "id": "PlayerPollPage_PublishListWhatsapp",
+  "unpublishedCollection": {
+    "name": "PublishListWhatsapp",
+    "pageId": "PlayerPollPage",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": []
+  }
+}

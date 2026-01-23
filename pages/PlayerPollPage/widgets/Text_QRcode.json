@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 158,
+  "bottomRow": 168,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -30,8 +30,8 @@
   "mobileRightColumn": 35,
   "mobileTopRow": 152,
   "needsErrorInfo": false,
-  "originalBottomRow": 159,
-  "originalTopRow": 155,
+  "originalBottomRow": 160,
+  "originalTopRow": 156,
   "overflow": "NONE",
   "parentColumnSpace": 6.84375,
   "parentId": "0",
@@ -43,7 +43,7 @@
   "text": "QR code for Payment",
   "textAlign": "CENTER",
   "textColor": "#1e3a8a",
-  "topRow": 154,
+  "topRow": 164,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
