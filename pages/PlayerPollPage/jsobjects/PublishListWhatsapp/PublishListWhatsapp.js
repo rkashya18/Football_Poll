@@ -44,9 +44,28 @@ export default {
       return;
     }
 
+    // Refresh votes to be safe
     await GetVotesCurrent.run();
-    const rows = this.buildRows(gameId);
+    
+    // Find Game Details (Date & Venue)
+    const game = (GetGames.data || []).find(g => String(g.GameID) === String(gameId)) || {};
+    
+    // Try common column names (Date/GameDate, Venue/Location)
+    const rawDate = game.Date || game.GameDate || "";
+    const venue = game.Venue || game.Location || "TBD";
+    
+    // Format the Game Date (e.g., "Sat, 24-Jan")
+    let gameDateStr = "";
+    if (rawDate) {
+        const mDate = moment(rawDate);
+        if (mDate.isValid()) {
+            gameDateStr = mDate.format("ddd, DD-MMM");
+        } else {
+            gameDateStr = rawDate; // fallback to raw string
+        }
+    }
 
+    const rows = this.buildRows(gameId);
     if (!rows.length) {
       showAlert("No votes found", "warning");
       return;
@@ -58,7 +77,12 @@ export default {
     // Plain text header
     lines.push(`*Football Poll List*`);
     lines.push(`Game: ${gameId}`);
-    lines.push(`Time: ${publishedAt}`);
+    
+    // ✅ NEW: Add Date and Venue
+    if (gameDateStr) lines.push(`Date: ${gameDateStr}`);
+    if (venue)       lines.push(`Venue: ${venue}`);
+    
+    lines.push(`List published at: ${publishedAt}`);
     lines.push(""); 
 
     rows.forEach(r => {
