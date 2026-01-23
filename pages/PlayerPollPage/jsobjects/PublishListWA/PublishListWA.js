@@ -44,25 +44,27 @@ export default {
       return;
     }
 
-    // Refresh votes to be safe
     await GetVotesCurrent.run();
     
-    // Find Game Details (Date & Venue)
+    // Find Game Details
     const game = (GetGames.data || []).find(g => String(g.GameID) === String(gameId)) || {};
     
-    // Try common column names (Date/GameDate, Venue/Location)
+    // Date
     const rawDate = game.Date || game.GameDate || "";
-    const venue = game.Venue || game.Location || "TBD";
-    
-    // Format the Game Date (e.g., "Sat, 24-Jan")
     let gameDateStr = "";
     if (rawDate) {
         const mDate = moment(rawDate);
-        if (mDate.isValid()) {
-            gameDateStr = mDate.format("ddd, DD-MMM");
-        } else {
-            gameDateStr = rawDate; // fallback to raw string
-        }
+        gameDateStr = mDate.isValid() ? mDate.format("ddd, DD-MMM") : rawDate;
+    }
+
+    // Venue
+    const venue = game.Venue || game.Location || "TBD";
+
+    // Time
+    let gameTime = game.Time || game.GameTime || game.StartTime || "";
+    const mTime = moment(gameTime, ["HH:mm:ss", "HH:mm"], true);
+    if (mTime.isValid()) {
+        gameTime = mTime.format("h:mm a");
     }
 
     const rows = this.buildRows(gameId);
@@ -71,15 +73,14 @@ export default {
       return;
     }
 
-    const publishedAt = moment().format("DD-MMM HH:mm");
+    const publishedAt = moment().format("DD-MMM h:mm a");
     
     const lines = [];
-    // Plain text header
     lines.push(`*Football Poll List*`);
     lines.push(`Game: ${gameId}`);
     
-    // ✅ NEW: Add Date and Venue
     if (gameDateStr) lines.push(`Date: ${gameDateStr}`);
+    if (gameTime)    lines.push(`Time: ${gameTime}`);
     if (venue)       lines.push(`Venue: ${venue}`);
     
     lines.push(`List published at: ${publishedAt}`);
@@ -89,8 +90,11 @@ export default {
       const rankStr = String(r.rank).padStart(2, "0");
       const slotDisplay = r.slot === "PLAYING" ? "" : ` [${r.slot}]`;
       
-      // Plain text row: "01. *Shashi* - IN"
-      lines.push(`${rankStr}. *${r.userId}*${slotDisplay} - ${r.paidFlag}`);
+      // ✅ CHANGED: Only show text if PAID. If IN, show nothing.
+      const statusSuffix = r.paidFlag === "PAID" ? " - PAID" : "";
+
+      // Output: "01. *Shashi*" OR "02. *Ajay* - PAID"
+      lines.push(`${rankStr}. *${r.userId}*${slotDisplay}${statusSuffix}`);
     });
 
     lines.push("");

@@ -1,0 +1,11 @@
+{
+  "gitSyncId": "694e5865c148916db7d99c87_c96eaabe-785a-439d-88d9-24c3a6cca11d",
+  "id": "PlayerPollPage_PublishListWA",
+  "unpublishedCollection": {
+    "name": "PublishListWA",
+    "pageId": "PlayerPollPage",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": []
+  }
+}
